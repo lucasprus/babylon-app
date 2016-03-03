@@ -8,7 +8,7 @@
  * Controller of the babylonApp
  */
 angular.module( 'babylonApp' )
-    .controller( 'BookingCtrl', [ '$scope', '$http', '$log', '$window', '$uibModal', function( $scope, $http, $log, $window, $uibModal ) {
+    .controller( 'BookingCtrl', [ '$scope', '$http', '$log', 'AlertMessages', '$uibModal', function( $scope, $http, $log, AlertMessages, $uibModal ) {
 
         // This should be fetched from session or url
         var userId = 4966108;
@@ -119,8 +119,10 @@ angular.module( 'babylonApp' )
                 doctor: that.selectedDoctor.name.first + ' ' + that.selectedDoctor.name.last,
                 date: that.selectedAppointment
             } ).then( function() {
-                $log.info( 'Appointment successfully booked' );
-                $window.alert( 'Appointment successfully booked' );
+                AlertMessages.push( {
+                    type: 'success',
+                    message: 'Appointment successfully booked'
+                } );
             } );
         };
 

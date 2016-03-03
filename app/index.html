@@ -47,8 +47,20 @@
       </div>
     </div>
 
+    <div ng-controller="AlertMessagesCtrl">
+        <div
+            ng-repeat="alert in alerts"
+            ng-class="[ 'alert', 'alert-' + alert.type, 'alert-dismissible' ]"
+            role="alert">
+                <button type="button" class="close" aria-label="Close" ng-click="alert.dismiss()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                {{alert.message}}
+        </div>
+    </div>
+
     <div class="container">
-    <div ng-view=""></div>
+        <div ng-view=""></div>
     </div>
 
     <div class="footer">
@@ -88,6 +100,8 @@
         <script src="scripts/controllers/booking.js"></script>
         <script src="scripts/controllers/modalInstance.js"></script>
         <script src="scripts/controllers/myAppointments.js"></script>
+        <script src="scripts/services/alertMessages.js"></script>
+        <script src="scripts/controllers/alertMessages.js"></script>
         <!-- endbuild -->
 </body>
 </html>
