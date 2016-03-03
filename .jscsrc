@@ -1,0 +1,6 @@
+{
+    "preset": "jquery",
+    "validateIndentation": 4,
+    "validateQuoteMarks": { "mark": "'", "escape": true },
+    "maximumLineLength": 200
+}

@@ -1,0 +1,80 @@
+<!-- <pre>{{ booking.members | json }}</pre>
+<pre>{{ booking.selectedMember | json }}</pre> -->
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Book this consultation for</h3>
+    </div>
+    <div class="panel-body">
+        <div
+            ng-repeat="member in booking.members track by $index"
+            ng-init="fullName = member.name.first + ' ' + member.name.last"
+            class="person-item">
+                <span
+                    ng-show="member === booking.selectedMember"
+                    class="glyphicon glyphicon-ok-circle"
+                    aria-hidden="true"></span>
+                <img
+                    ng-click="booking.selectedMember = member"
+                    alt="{{ fullName }}"
+                    title="{{ fullName }}"
+                    ng-src="{{ 'images/avatars/' + member.image }}"
+                    class="img-circle"
+                    width="50"
+                    height="50">
+                <br>
+                <span>{{ fullName }}</span>
+                <span ng-if="$index === 0">(Yourself)</span>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Select a healthcare professional</h3>
+    </div>
+    <div class="panel-body">
+        <div
+            ng-repeat="professional in booking.professionals track by $index"
+            class="person-item">
+                <span
+                    ng-show="professional === booking.selectedProfessional"
+                    class="glyphicon glyphicon-ok-circle"
+                    aria-hidden="true"></span>
+                <img
+                    ng-click="booking.selectedProfessional = professional"
+                    alt="{{ professional.type }}"
+                    title="{{ professional.type }}"
+                    src="http://placehold.it/50"
+                    class="img-circle">
+                <br>
+                <span>{{professional.type}}</span>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Select the doctor</h3>
+    </div>
+    <div class="panel-body">
+        <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="booking.openDoctorsModal()">
+            {{ booking.selectedDoctor.name.first + ' ' + booking.selectedDoctor.name.last }}
+        </button>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Next available appointment</h3>
+    </div>
+    <div class="panel-body">
+        <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="booking.openAppointmentsModal()">
+            {{ booking.selectedAppointment | date:'medium' }}
+        </button>
+    </div>
+</div>
+
+<button type="button" class="btn btn-primary btn-lg btn-block" ng-click="booking.book()">
+    Book consultation
+</button>

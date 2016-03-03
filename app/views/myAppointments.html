@@ -1,0 +1,18 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Member</th>
+            <th>Doctor</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="appointment in myAppointments.list track by $index">
+            <th scope="row">{{ $index + 1 }}</th>
+            <td>{{ appointment.member }}</td>
+            <td>{{ appointment.doctor }}</td>
+            <td>{{ appointment.date | date:'medium' }}</td>
+        </tr>
+    </tbody>
+</table>

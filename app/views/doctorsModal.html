@@ -1,0 +1,19 @@
+<div class="modal-header">
+    <h3 class="modal-title">Select the doctor</h3>
+</div>
+<div class="modal-body">
+    <ul>
+        <li ng-repeat="item in items">
+            <a
+                href=""
+                ng-class="selected.item === item ? 'selected' : ''"
+                ng-click="select( item )">
+                    {{ item.name.first + ' ' + item.name.last }}
+            </a>
+            <span>Next slot: {{ item.nextSlot | date:'medium' }}</span>
+        </li>
+    </ul>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>
